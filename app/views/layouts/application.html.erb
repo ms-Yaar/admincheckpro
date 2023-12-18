@@ -1,0 +1,33 @@
+<!-- app/views/layouts/application.html.erb -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Your head content here -->
+</head>
+<body>
+
+  <nav>
+    <!-- Other navigation links -->
+
+   
+<% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>
+    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar -Link' %> 
+    <%= button_to'Sign out', destroy_user_session_path, method: :delete %>
+ <%= link_to 'Admin Dashboard', rails_admin_path %>
+
+    <% else %>
+    <%= link_to 'Sign Up', new_user_registration_path, :class => 'navbar-Link' %>
+    <%= link_to 'Login', new_user_session_path, :class => 'navbar-Link' %>
+    <% end %>
+    <!-- Other navigation links -->
+  </nav>
+
+  <div>
+    <!-- Your page content here -->
+    <%= yield %>
+  </div>
+
+</body>
+</html>
